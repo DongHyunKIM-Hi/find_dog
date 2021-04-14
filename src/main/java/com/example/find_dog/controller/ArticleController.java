@@ -1,5 +1,6 @@
 package com.example.find_dog.controller;
 
+import com.example.find_dog.config.WebConfig;
 import com.example.find_dog.model.dto.ArticleRequestDto;
 import com.example.find_dog.model.entity.Article;
 import com.example.find_dog.repository.ArticleRepository;
