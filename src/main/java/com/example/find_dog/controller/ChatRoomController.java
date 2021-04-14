@@ -16,8 +16,8 @@ public class ChatRoomController {
 
 
     // chatroom을 생성하는 페이지  여기서 사용자 이름 설정  차후에 토큰에 있는 이름뽑아서 넣어줄 예졍
-    @GetMapping("/make")
-    public String rooms() {
+    @GetMapping("/room")
+    public String rooms(Model model) {
         return "/chat/room";
     }
 
