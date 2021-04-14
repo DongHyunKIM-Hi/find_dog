@@ -12,7 +12,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class FindDogApplication {
 
-    public static void getKoreaCovidDatas() throws IOException {
+    public static void createList() throws IOException {
         String SEARCH_URL = "https://dmanimal.co.kr/adoption?keyword_type=all&keyword=";
         String[] types = {"사모예드", "빠삐용", "시바견", "퍼그", "진돗개", "푸들", "페키니즈", "차우차우", "브라도리트리버", "보더콜리",
                 "웰시코기", "잭러셀테리어", "비숑프리제", "프렌치불독", "시베리안허스키", "골든리트리버"};
@@ -43,9 +43,6 @@ public class FindDogApplication {
 //                System.out.println(elements);
 
                 String type = elements.select("tr:nth-child(1) > td:nth-child(2) > div > span").text();         // 묘종/견종
-                if(type == null || type == "")
-                    type = currType;
-
                 String age = elements.select("tr:nth-child(1) > td:nth-child(4) > div > span").text();          // 나이
                 String gender = elements.select("tr:nth-child(2) > td:nth-child(2) > div > span").text();       // 성별
                 String note = elements.select("tr:nth-child(2) > td:nth-child(4) > div > span").text();         // 특이사항
@@ -65,14 +62,9 @@ public class FindDogApplication {
 
     }
 
-
-
-//        make_detail(productIdRepository.findAll());
-//    }
-
     public static void main(String[] args) throws IOException {
         SpringApplication.run(FindDogApplication.class, args);
-        FindDogApplication.getKoreaCovidDatas();
+        FindDogApplication.createList();
 
 //        1. 사모예드
 //        2. 빠삐용
