@@ -42,7 +42,9 @@ public class FindDogApplication {
                 elements = doc.select(".board_txt_area");
 //                System.out.println(elements);
 
-                String type = elements.select("tr:nth-child(1) > td:nth-child(2) > div > span").text();         // 묘종/견종
+                String type = elements.select("tr:nth-child(1) > td:nth-child(2) > div > span").text();         // 견종
+//                String type = currType;         // 견종
+//                System.out.println(currType);
                 String age = elements.select("tr:nth-child(1) > td:nth-child(4) > div > span").text();          // 나이
                 String gender = elements.select("tr:nth-child(2) > td:nth-child(2) > div > span").text();       // 성별
                 String note = elements.select("tr:nth-child(2) > td:nth-child(4) > div > span").text();         // 특이사항
@@ -54,7 +56,7 @@ public class FindDogApplication {
                 String dislike = elements.select("tr:nth-child(5) > td:nth-child(4) > div").text();             // 싫어하는 것
 
                 System.out.println("type: " + type + "/ age: " + age + "/ gender: " + gender + "/ note: " + note + "/ vaccine: " + vaccine + "/ neuter: " + neuter +
-                        "/ reson: " + reason + "/ before: " + before + "/ like: " + like + "/ dislike: " + dislike + "/ image: " + image);
+                        "/ reason: " + reason + "/ before: " + before + "/ like: " + like + "/ dislike: " + dislike + "/ image: " + image);
 //                break;
             }
 //            break;
