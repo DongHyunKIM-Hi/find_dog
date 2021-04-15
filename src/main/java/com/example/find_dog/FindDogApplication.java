@@ -57,20 +57,21 @@ public class FindDogApplication {
 
 //                String type = elements.select("tr:nth-child(1) > td:nth-child(2) > div > span").text();         // 견종 (크롤링으로 수집한 데이터로 저장)
                     String type = currType;                                                                         // 견종 (현재 검색어로 저장)
-                    String age = elements.select("tr:nth-child(1) > td:nth-child(4) > div > span").text();          // 나이
+                    String age = elements.select("tr:nth-child(1) > td:nth-child(4) > div > span").text() ;          // 나이
                     String gender = elements.select("tr:nth-child(2) > td:nth-child(2) > div > span").text();       // 성별
                     String note = elements.select("tr:nth-child(2) > td:nth-child(4) > div > span").text();         // 특이사항
                     String vaccine = elements.select("tr:nth-child(3) > td:nth-child(2) > div > span").text();      // 접종유무
                     String neuter = elements.select("tr:nth-child(3) > td:nth-child(4) > div > span").text();       // 중성화유무
                     String reason = elements.select("tr:nth-child(4) > td:nth-child(2) > div").text();              // 보호소로 오게 된 이유
-                    String before = elements.select("tr:nth-child(4) > td:nth-child(4) > div").text();              // 맡겨지기 전 가정 환경
+//                    String before = elements.select("tr:nth-child(4) > td:nth-child(4) > div").text();              // 맡겨지기 전 가정 환경
                     String fave = elements.select("tr:nth-child(5) > td:nth-child(2) > div").text();                // 좋아하는 것
                     String dislike = elements.select("tr:nth-child(5) > td:nth-child(4) > div").text();             // 싫어하는 것
 
 //                System.out.println("type: " + type + "/ age: " + age + "/ gender: " + gender + "/ note: " + note + "/ vaccine: " + vaccine + "/ neuter: " + neuter +
 //                        "/ reason: " + reason + "/ before: " + before + "/ like: " + fave + "/ dislike: " + dislike + "/ image: " + image);
-
-                    adoptionRepository.save(new Adoption(type, age, gender, note, vaccine, neuter, reason, before, fave, dislike, image));
+                    Adoption tmp = new Adoption(type, age, gender, note, vaccine, neuter, reason, fave, dislike, image);
+                    tmp.check_valide();
+                    adoptionRepository.save(tmp);
 
 //                    break;
                 }

@@ -2,16 +2,18 @@ package com.example.find_dog.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity
-public class Adoption extends Timestamped{
+public class Adoption {
 
     @Id
     @GeneratedValue
@@ -38,8 +40,8 @@ public class Adoption extends Timestamped{
     @Column(nullable = true)
     private String reason;      // 보호소로 오게 된 이유
 
-    @Column(nullable = true)
-    private String before;      // 맡겨지기 전 가정 환경
+//    @Column(nullable = true)
+//    private String before;      // 맡겨지기 전 가정 환경
 
     @Column(nullable = true)
     private String fave;        // 좋아하는 것
@@ -47,10 +49,10 @@ public class Adoption extends Timestamped{
     @Column(nullable = true)
     private String dislike;     // 싫어하는 것
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 1000)
     private String image;       // 썸네일 이미지
 
-    public Adoption(String type, String age, String gender, String note, String vaccine, String neuter, String reason, String before, String fave, String dislike, String image){
+    public Adoption(String type, String age, String gender, String note, String vaccine, String neuter, String reason, String fave, String dislike, String image){
         this.type = type;
         this.age = age;
         this.gender = gender;
@@ -58,9 +60,22 @@ public class Adoption extends Timestamped{
         this.vaccine = vaccine;
         this.neuter = neuter;
         this.reason = reason;
-        this.before = before;
         this.fave = fave;
         this.dislike = dislike;
         this.image = image;
+    }
+
+    public void check_valide(){
+        this.type = this.type.equals("")? "미상": this.type;
+        this.age = this.age.equals("") ? "미상":this.age;
+        this.gender = this.gender.equals("")? "미상":this.gender;
+        this.note = this.note.equals("")? "미상":this.note;
+        this.vaccine = this.vaccine.equals("")? "미상":this.vaccine;
+        this.neuter = this.neuter.equals("")? "미상":this.neuter;
+        this.reason = this.reason.equals("")? "미상":this.reason;
+        this.fave = this.fave.equals("")? "미상":this.fave;
+        this.dislike = this.dislike.equals("")? "미상":this.dislike;
+        this.image = this.image.equals("")? "미상":this.image;
+
     }
 }
