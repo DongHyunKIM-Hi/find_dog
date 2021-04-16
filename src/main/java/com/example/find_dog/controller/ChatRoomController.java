@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/chat")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ChatRoomController {
     private final ChatService chatService;
 

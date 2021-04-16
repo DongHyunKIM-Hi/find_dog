@@ -30,7 +30,7 @@
     </div>
     <ul class="list-group">
         <li class="list-group-item" v-for="message in messages">
-            {{message.sender}} - {{message.message}}</a>
+            <a @click="clickMe(message)" >{{message.sender}} :  {{message.message}}</a>
         </li>
     </ul>
     <div></div>
@@ -53,7 +53,9 @@
             room: {},
             sender: '',
             message: '',
-            messages: []
+            messages: [],
+            type: '',
+            lick: ''
         },
         created() {
             this.roomId = localStorage.getItem('wschat.roomId');
@@ -61,11 +63,18 @@
         },
         methods: {
             sendMessage: function() {
-                ws.send("/pub/chat/message", {}, JSON.stringify({type:'TALK', roomId:this.roomId, sender:this.sender, message:this.message}));
+                ws.send("/pub/chat/message", {}, JSON.stringify({type:this.type, roomId:this.roomId, sender:this.sender, message:this.message}));
                 this.message = '';
             },
             recvMessage: function(recv) {
-                this.messages.unshift({"type":recv.type,"sender":recv.type=='ENTER'?'[알림]':recv.sender,"message":recv.message})
+                this.messages.unshift({"type":recv.type,"sender": recv.sender,"message":recv.message, "link": recv.link})
+            },
+            clickMe: function (message){
+                if (message.type == "DEV"){
+                    window.open(message.link)
+                    return
+                }
+                ws.send("/pub/chat/message", {}, JSON.stringify({type:message.type, roomId:this.roomId, sender:message.sender, message:message.message}));
             }
         }
     });
