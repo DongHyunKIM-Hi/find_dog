@@ -40,9 +40,6 @@ public class Adoption {
     @Column(nullable = true)
     private String reason;      // 보호소로 오게 된 이유
 
-//    @Column(nullable = true)
-//    private String before;      // 맡겨지기 전 가정 환경
-
     @Column(nullable = true)
     private String fave;        // 좋아하는 것
 

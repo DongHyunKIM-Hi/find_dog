@@ -63,7 +63,6 @@ public class FindDogApplication {
                     String vaccine = elements.select("tr:nth-child(3) > td:nth-child(2) > div > span").text();      // 접종유무
                     String neuter = elements.select("tr:nth-child(3) > td:nth-child(4) > div > span").text();       // 중성화유무
                     String reason = elements.select("tr:nth-child(4) > td:nth-child(2) > div").text();              // 보호소로 오게 된 이유
-//                    String before = elements.select("tr:nth-child(4) > td:nth-child(4) > div").text();              // 맡겨지기 전 가정 환경
                     String fave = elements.select("tr:nth-child(5) > td:nth-child(2) > div").text();                // 좋아하는 것
                     String dislike = elements.select("tr:nth-child(5) > td:nth-child(4) > div").text();             // 싫어하는 것
 
