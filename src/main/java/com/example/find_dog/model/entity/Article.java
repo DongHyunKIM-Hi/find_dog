@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,13 +19,7 @@ public class Article extends Timestamped{
     @Id
     private Long id;
 
-    @Column(nullable = true)
-    private String token;
-
-    @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false)
+    @Column
     private String username;
 
     @Column(nullable = false)
@@ -32,17 +28,28 @@ public class Article extends Timestamped{
     @Column(nullable = false)
     private String imgUrl;
 
+    @Column
+    private Long likeCnt;
+
+    @Column
+    @ElementCollection
+    private List<String> likeId = new ArrayList<>();
+
     public Article(ArticleRequestDto requestDto){
-        this.title = requestDto.getTitle();
         this.username = requestDto.getUsername();
         this.content = requestDto.getContent();
         this.imgUrl = requestDto.getImgUrl();
+        this.likeCnt = requestDto.getLikeCnt();
+        this.likeId = requestDto.getLikeId();
+
 
     }
 
     public void update(ArticleRequestDto requestDto){
-        this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.imgUrl = requestDto.getImgUrl();
+        this.likeCnt = requestDto.getLikeCnt();
+        this.likeId = requestDto.getLikeId();
     }
+
 }

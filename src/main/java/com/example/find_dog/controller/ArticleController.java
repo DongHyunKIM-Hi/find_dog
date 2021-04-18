@@ -33,9 +33,14 @@ public class ArticleController {
     }
 
     @PutMapping( "/api/article/{article_id}")
-    public Long updateArticle(@PathVariable Long article_id, @RequestBody ArticleRequestDto requestDto){
+    public  List<String>  updateArticle(@PathVariable Long article_id, @RequestBody ArticleRequestDto requestDto){
         return articleService.update(article_id, requestDto);
     }
+
+//    @PutMapping( "/api/article/like/{article_id}")
+//    public List<String>  updateArticleLike(@PathVariable Long article_id, @RequestBody ArticleRequestDto requestDto){
+//        return articleService.updateLike(article_id, requestDto);
+//    }
 
     @DeleteMapping( "/api/article/{article_id}")
     public Long deleteArticle(@PathVariable Long article_id) {
