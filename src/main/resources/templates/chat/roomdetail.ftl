@@ -19,15 +19,7 @@
     <div>
         <h2>{{room.name}}</h2>
     </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <label class="input-group-text">내용</label>
-        </div>
-        <input type="text" class="form-control" v-model="message" @keyup.enter="sendMessage">
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="button" @click="sendMessage">보내기</button>
-        </div>
-    </div>
+
     <ul class="list-group">
         <li class="list-group-item" v-for="message in messages">
             <a @click="clickMe(message)" >{{message.sender}} :  {{message.message}}</a>
@@ -62,10 +54,6 @@
             this.sender = localStorage.getItem('wschat.user_name');
         },
         methods: {
-            sendMessage: function() {
-                ws.send("/pub/chat/message", {}, JSON.stringify({type:this.type, roomId:this.roomId, sender:this.sender, message:this.message}));
-                this.message = '';
-            },
             recvMessage: function(recv) {
                 this.messages.unshift({"type":recv.type,"sender": recv.sender,"message":recv.message, "link": recv.link})
             },
@@ -74,6 +62,7 @@
                     window.open(message.link)
                     return
                 }
+                this.messages = []
                 ws.send("/pub/chat/message", {}, JSON.stringify({type:message.type, roomId:this.roomId, sender:message.sender, message:message.message}));
             }
         }
