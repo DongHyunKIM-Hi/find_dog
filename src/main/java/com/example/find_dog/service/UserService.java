@@ -40,7 +40,7 @@ public class UserService {
                 .authorities(Collections.singleton(authority))
                 .activated(true)
                 .build();
-
+        System.out.println("성공");
         return userRepository.save(user);
     }
 
