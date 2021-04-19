@@ -51,7 +51,7 @@ public class ChatController {
                     message.setType(ChatMessage.MessageType.DEV);
                     message.setLink("https://github.com/DongHyunKIM-Hi");
                     messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-                    message.setMessage("김미진(cona)");
+                    message.setMessage("강미진(cona)");
                     message.setSender("나도 백엔드 개발자요!!");
                     message.setLink("https://github.com/conagreen");
                     message.setType(ChatMessage.MessageType.DEV);
@@ -66,7 +66,7 @@ public class ChatController {
                     message.setLink("https://github.com/DaHee200");
                     message.setType(ChatMessage.MessageType.DEV);
                     messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-                    message.setMessage("심현인");
+                    message.setMessage("심현인(holasim91)");
                     message.setSender("비숑 마스터");
                     message.setLink("https://github.com/holasim91");
                     message.setType(ChatMessage.MessageType.DEV);
