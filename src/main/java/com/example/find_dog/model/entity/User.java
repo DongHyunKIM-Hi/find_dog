@@ -17,21 +17,22 @@ public class User {
 
     @JsonIgnore
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(unique = true)
+    @Column(name = "username", unique = true)
     private String username;
 
     @JsonIgnore
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column(name = "nickname")
     private String nickname;
 
     @JsonIgnore
-    @Column
+    @Column(name = "activated")
     private boolean activated;
 
     @ManyToMany
