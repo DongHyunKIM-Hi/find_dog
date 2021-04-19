@@ -20,7 +20,7 @@ public class Comment {
     private Long id;
 
     @Column(nullable = false)
-    private String content;
+    private String comment;
 
     @Column(nullable = false)
     private String username;
@@ -31,12 +31,12 @@ public class Comment {
     
     public Comment(CommentRequestDto requestDto, Article article){
         this.username = requestDto.getUsername();
-        this.content = requestDto.getContent();
+        this.comment = requestDto.getComment();
         this.article = article;
     }
     public void update(CommentRequestDto requestDto){
         this.username = requestDto.getUsername();
-        this.content = requestDto.getContent();
+        this.comment = requestDto.getComment();
     }
 
 
