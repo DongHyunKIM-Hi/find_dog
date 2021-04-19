@@ -5,6 +5,8 @@ import com.example.find_dog.jwt.JwtAuthenticationEntryPoint;
 import com.example.find_dog.jwt.JwtSecurityConfig;
 import com.example.find_dog.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -14,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -73,10 +76,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/api/**").permitAll()
-
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.POST, "/api/article").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/article/{article_id}").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/article/{article_id}").authenticated()
+                .anyRequest().permitAll()
 
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider));
