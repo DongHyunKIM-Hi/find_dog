@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import java.io.IOException;
 
 @RequiredArgsConstructor
 @EnableJpaAuditing

@@ -12,13 +12,15 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry
                 .addMapping("/**")
-                .allowedOrigins("http://**")
-                .allowedOrigins("https://**")
+                .allowedOrigins("*")
+//                .allowedOrigins("http://**")
+//                .allowedOrigins("https://**")
                 .allowedMethods(
                         HttpMethod.GET.name(),
                         HttpMethod.HEAD.name(),
                         HttpMethod.POST.name(),
                         HttpMethod.PUT.name(),
-                        HttpMethod.DELETE.name());
+                        HttpMethod.DELETE.name(),
+                        HttpMethod.OPTIONS.name());
     }
 }
