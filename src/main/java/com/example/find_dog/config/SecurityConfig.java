@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers(
-                        "/h2-console/**"
-                        ,"/error"
+                        "/h2-console/**",
+                        "/error"
                 );
     }
 
@@ -79,6 +79,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/article").authenticated()
                 .antMatchers(HttpMethod.PUT, "/api/article/{article_id}").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/api/article/{article_id}").authenticated()
+                .antMatchers(HttpMethod.POST, "/api/comment/{article_id}").authenticated()
+                .antMatchers(HttpMethod.PUT, "/api/comment/{comment_id}").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/comment/{comment_id}").authenticated()
                 .anyRequest().permitAll()
 
                 .and()
