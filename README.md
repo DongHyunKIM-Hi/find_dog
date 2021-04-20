@@ -23,15 +23,17 @@
 
 
 </br>
-API 설계 (excel로 작성해서 보내주세요)
+
+##API 설계 (excel로 작성해서 보내주세요)
 </br>
 ![image](https://user-images.githubusercontent.com/57423518/115397982-a1605e80-a221-11eb-8b97-6dbec4767246.png)
 
 </br>
+## 기능소개
 여기부터는 열심히 만든 기능들을 소개하면 될 것 같습니다.
 
 
-
+## 동작화면
 </br>
 배폴한 프론트 사진과 유튜브 동영상 링크 
 
