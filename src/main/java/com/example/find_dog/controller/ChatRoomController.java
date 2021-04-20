@@ -22,23 +22,17 @@ public class ChatRoomController {
         return "/chat/room";
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "test123123";
-    }
-
     //chatroom 생성후 chatroom id 반환
-
     @PostMapping("/room")
     @ResponseBody
-    public String createRoom(@RequestParam String user){
+    public String createRoom(@RequestParam String user) {
         ChatRoom myroom = chatService.createChatRoom(user);
         return myroom.getRoomId();
     }
 
-    // chatroom 입장
+    // 가지고 있는 chatRoomID를 통해서 chatroom 입장
     @GetMapping("/room/enter/{roomId}")
-    public String roomDetail(Model model, @PathVariable String roomId){
+    public String roomDetail(Model model, @PathVariable String roomId) {
         model.addAttribute("roomId", roomId);
         return "/chat/roomdetail";
     }

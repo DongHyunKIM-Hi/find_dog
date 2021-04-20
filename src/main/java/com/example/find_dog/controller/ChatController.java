@@ -18,7 +18,7 @@ public class ChatController {
     private final SimpMessageSendingOperations messagingTemplate;
     private final AdoptionRepository adoptionRepository;
 
-
+    //챗봇 구성 처음에 입장했을 때 선택 할 수 있는 옵션 띄워주기
     @MessageMapping("/chat/message")
     public void message(ChatMessage message) {
         if (ChatMessage.MessageType.ENTER.equals(message.getType())) {
@@ -35,12 +35,13 @@ public class ChatController {
             message.setType(ChatMessage.MessageType.TALK);
             messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
         }
-
-        else{
+// 메시지의 타입이 ENTER가 아니면 실행
+        //선택한 값에 대한 처리
+        else {
             message.setSender("발견일동");
-            switch (message.getMessage()){
+            switch (message.getMessage()) {
                 case "새로운 가족을 기다리는 아이들이 궁금하신가요?":
-                    message.setMessage(adoptionRepository.findAll().size()+ "마리의 아이들이 기다리고 있습니다(클릭시 이동)");
+                    message.setMessage(adoptionRepository.findAll().size() + "마리의 아이들이 기다리고 있습니다(클릭시 이동)");
                     message.setType(ChatMessage.MessageType.DEV);
                     message.setLink("https://dmanimal.co.kr/adoption");
                     messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);

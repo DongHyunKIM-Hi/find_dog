@@ -15,6 +15,7 @@ public class MbtiService {
     private final Mbti_typeRepository mbti_typeRepository;
     private final Mbti_testRepository mbti_testRepository;
 
+    // 전달받은 값으로 해당하는 mbti 유형 결정해주기
     public Mbti_type result(ResultDto resultDto) {
         System.out.println(resultDto.getResult_list());
         int[] result = resultDto.getResult_list();
@@ -27,6 +28,7 @@ public class MbtiService {
         return mbti_typeRepository.findByType(want);
     }
 
+    // MBTI 타입 설정 디비에 넣어주기
     public void createDB1() {
         String[] type_list = {
                 "ISTJ",
@@ -105,6 +107,7 @@ public class MbtiService {
         }
     }
 
+    //MBTI 질문 설정해서 디비에 넣어주기
     public void createDB2() {
         String[] MBTI_list = {
                 "M",

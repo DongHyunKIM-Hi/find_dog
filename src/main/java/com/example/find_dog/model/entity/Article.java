@@ -22,7 +22,7 @@ public class Article extends Timestamped{
     @Column
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private String content;
 
     @Column(nullable = false)
