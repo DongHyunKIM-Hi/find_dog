@@ -19,6 +19,7 @@ public class WebSockConfig implements WebSocketMessageBrokerConfigurer {
     }
 
     @Override
+        //소켓 통신을 시작하겠다고 선언
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws-stomp").setAllowedOrigins("*")
                 .withSockJS();
