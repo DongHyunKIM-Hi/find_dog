@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class ArticleRequestDto {
-    private String username;
+    private String nickname;
     private String content;
     private String imgUrl;
     private Long likeCnt;

@@ -29,8 +29,8 @@ public class ArticleService {
         Article article = articleRepository.findById(id).orElseThrow(
                 () ->new NullPointerException("해당 게시글이 존재하지 않습니다.")
         );
-        String likeUsername = requestDto.getUsername();
-        requestDto.getLikeId().add(likeUsername);
+        String likeNickname = requestDto.getNickname();
+        requestDto.getLikeId().add(likeNickname);
         article.update(requestDto);
         return requestDto.getLikeId();
     }

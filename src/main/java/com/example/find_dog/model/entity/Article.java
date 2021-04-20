@@ -20,7 +20,7 @@ public class Article extends Timestamped{
     private Long id;
 
     @Column
-    private String username;
+    private String nickname;
 
     @Column(nullable = false)
     private String content;
@@ -36,7 +36,7 @@ public class Article extends Timestamped{
     private List<String> likeId = new ArrayList<>();
 
     public Article(ArticleRequestDto requestDto){
-        this.username = requestDto.getUsername();
+        this.nickname = requestDto.getNickname();
         this.content = requestDto.getContent();
         this.imgUrl = requestDto.getImgUrl();
         this.likeCnt = requestDto.getLikeCnt();

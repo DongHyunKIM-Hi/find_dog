@@ -19,23 +19,23 @@ public class Comment {
     @Id
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String comment;
 
-    @Column(nullable = false)
-    private String username;
+    @Column
+    private String nickname;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Article article;
     
     public Comment(CommentRequestDto requestDto, Article article){
-        this.username = requestDto.getUsername();
+        this.nickname = requestDto.getNickname();
         this.comment = requestDto.getComment();
         this.article = article;
     }
     public void update(CommentRequestDto requestDto){
-        this.username = requestDto.getUsername();
+        this.nickname = requestDto.getNickname();
         this.comment = requestDto.getComment();
     }
 
