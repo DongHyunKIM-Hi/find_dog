@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class ChatService {
     private final ChatRoomRepository chatRoomRepository;
 
+    // 채팅방 생성해주기
     public ChatRoom createChatRoom(String user){
         ChatRoom chatRoom = ChatRoom.create(user);
         return chatRoom;

@@ -13,12 +13,13 @@ public class WebSockConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-    // sub와 pub를 역할을 나눠주는 부분이다
+        //stomp를 통한 sub과 pub 구성 설정
         config.enableSimpleBroker("/sub");
         config.setApplicationDestinationPrefixes("/pub");
     }
 
     @Override
+        //소켓 통신을 시작하겠다고 선언
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws-stomp").setAllowedOrigins("*")
                 .withSockJS();
