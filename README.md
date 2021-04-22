@@ -218,5 +218,16 @@ public class CommentController {
 + 업데이트는 business layer에서 로직을 처리하고 나머지는 Repository에서 바로 받아와 처리하는 방식으로 구현하였습니다.
 ## 동작화면
 </br>
-배폴한 프론트 사진과 유튜브 동영상 링크 
+
+![](https://images.velog.io/images/hyundong_kk/post/b1561107-34c7-4b38-b2a8-25cc52ca6e4c/image.png)
+
+![](https://images.velog.io/images/hyundong_kk/post/0e2c0846-067b-4182-97f9-16b9d7e6101c/image.png)
+
+![](https://images.velog.io/images/hyundong_kk/post/99743cf2-d53f-4300-a442-742f8fd9c456/image.png)
+
+![](https://images.velog.io/images/hyundong_kk/post/460451f9-f0e6-4b6f-b038-cf7a8e4f4acf/image.png)
+
+![](https://images.velog.io/images/hyundong_kk/post/5b86beb8-12c0-4ac3-ad05-8507cebcb4af/image.png)
+
+![](https://images.velog.io/images/hyundong_kk/post/a63b3982-a470-49d3-8209-a2194d52a670/image.png)
 
