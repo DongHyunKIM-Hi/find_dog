@@ -26,7 +26,7 @@
 
 ## API 설계 (excel로 작성해서 보내주세요)
 </br>
-![image](https://user-images.githubusercontent.com/57423518/115660496-0da0a680-a377-11eb-84e4-dd8f60b33805.png)
+![KakaoTalk_20210421_225440861](https://user-images.githubusercontent.com/57423518/115660770-76881e80-a377-11eb-8407-7a68a05eeb0a.png)
 
 
 </br>
