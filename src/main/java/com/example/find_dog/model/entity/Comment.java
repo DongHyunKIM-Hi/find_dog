@@ -28,12 +28,14 @@ public class Comment {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Article article;
-    
+
+
     public Comment(CommentRequestDto requestDto, Article article){
         this.nickname = requestDto.getNickname();
         this.comment = requestDto.getComment();
         this.article = article;
     }
+
     public void update(CommentRequestDto requestDto){
         this.nickname = requestDto.getNickname();
         this.comment = requestDto.getComment();

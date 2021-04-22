@@ -14,6 +14,8 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
+
+    //댓글 수정하기 위해 해당 아이디로 댓글을 찾아오는 코드
     @Transactional
     public Long update(Long id, CommentRequestDto requestDto){
         Comment comment = commentRepository.findById(id).orElseThrow(

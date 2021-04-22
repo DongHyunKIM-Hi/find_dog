@@ -15,15 +15,7 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-//    @Transactional
-//    public Long update(Long id, ArticleRequestDto requestDto){
-//        Article article = articleRepository.findById(id).orElseThrow(
-//                () ->new NullPointerException("해당 게시글이 존재하지 않습니다.")
-//        );
-//        article.update(requestDto);
-//        return article.getId();
-//    }
-
+//해당 게시글 정보를 업데이트 하기 위해 아이디로 게시글 찾아오는 코드
     @Transactional
     public List<String> update(Long id, ArticleRequestDto requestDto){
         Article article = articleRepository.findById(id).orElseThrow(
