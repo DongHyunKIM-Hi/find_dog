@@ -26,7 +26,8 @@
 
 ## API 설계 (excel로 작성해서 보내주세요)
 </br>
-![image](https://user-images.githubusercontent.com/57423518/115397982-a1605e80-a221-11eb-8b97-6dbec4767246.png)
+![image](https://user-images.githubusercontent.com/57423518/115660496-0da0a680-a377-11eb-84e4-dd8f60b33805.png)
+
 
 </br>
 
