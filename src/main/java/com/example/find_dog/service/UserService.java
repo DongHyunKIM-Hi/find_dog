@@ -22,6 +22,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // 회원가입 로직을 수행하는 메서
     @Transactional
     public User signup(UserDto userDto) {
         if (userRepository.findOneWithAuthoritiesByUsername(userDto.getUsername()).orElse(null) != null) {
@@ -44,11 +45,18 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    /*
+    * getUserWithAuthorities는 username을 파라미터로 받아서
+    * 어떤한 user든 username에 해당하는 user객체와 권한정보들을 가져올 수 있는 메서드
+    * */
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities(String username) {
         return userRepository.findOneWithAuthoritiesByUsername(username);
     }
 
+    /*
+    * getMyUserWithAuthorities 메서드는 현재 SecurityContext에 저장되어있는 username에 해당하는 정보만 가져온다.
+    * */
     @Transactional(readOnly = true)
     public Optional<User> getMyUserWithAuthorities() {
         return SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);

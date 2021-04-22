@@ -20,6 +20,10 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
 
+/*
+* InitializingBean을 implements해서 afterPropertiesSet을 Override한 이유는
+* 빈이 생성이 되고 주입을 받은 후에 주입받은 secret값을 Base64 Decode해서 key변수에 할당하기 위함
+* */
 @Component
 public class TokenProvider implements InitializingBean {
 
@@ -46,6 +50,11 @@ public class TokenProvider implements InitializingBean {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
+    /*
+    * Authentication객체의 권한정보를 이용해서 토큰을 생성하는 createToken 메소드 추가.
+    * authentication을 인자로 받아서 authorities, application.propertied에서 설정했던 만료시간을 설정하고
+    * jwt 토큰을 생성해서 리턴한다.
+    * */
     public String createToken(Authentication authentication) {
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -62,6 +71,11 @@ public class TokenProvider implements InitializingBean {
                 .compact();
     }
 
+    /*
+    * token을 인자로 받아서 토큰에 담겨있는 권한정보들을 이용해서 Authentication 객체를 리턴하는 메소드 생성.
+    * 토큰으로 클레임을 만들고 이를 이용해 유저 객체를 만들어서 최종적으로 Authentication 객체를 리턴.
+    * authorities: 권한정보들, principal: 유저 객체
+    * */
     public Authentication getAuthentication(String token) {
         Claims claims = Jwts
                 .parserBuilder()
@@ -80,6 +94,10 @@ public class TokenProvider implements InitializingBean {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
+    /*
+    * token을 인자로 받아서 토큰의 유효성 검사를 할 수 있는 validateToken 메소드 추가.
+    * 토큰을 파싱해보고 발생하는 익셉션들을 캐치 -> 문제가 있으면 return false, 문제가 없으면 return true
+    * */
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);

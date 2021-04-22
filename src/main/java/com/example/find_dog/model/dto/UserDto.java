@@ -6,6 +6,7 @@ import lombok.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+// 회원가입시에 사용할 Dto
 @Getter
 @Setter
 @Builder
@@ -14,7 +15,7 @@ import javax.validation.constraints.Size;
 public class UserDto {
 
     @NotNull
-    private String username;
+    private String username;    // email주소를 담는 칼럼(nickname과는 별개!)
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotNull

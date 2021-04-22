@@ -6,6 +6,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
+/*
+* @Entity는 데이터베이스의 테이블과 1:1 매핑되는 객체
+*  */
 @Entity
 //@Table(name = "user")
 @Getter
@@ -35,6 +38,9 @@ public class User {
     @Column(name = "activated")
     private boolean activated;
 
+    /*
+    * User객체와 Authority객체의 다대다 관곌를 일대다, 다대일 관계의 조인 테이블로 정의
+    * */
     @ManyToMany
     @JoinTable(
             name = "user_authority",

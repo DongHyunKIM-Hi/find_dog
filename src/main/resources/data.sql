@@ -1,3 +1,7 @@
+/*
+ In-memory DB인 H2로 개발할 때는 SpringBoot 서버가 재부팅되면 데이터도 초기화되기 때문에
+ 편의를 위해서 서버가 시작될 때마다 실행할 쿼리문을 작성.
+ */
 INSERT INTO USER (USER_ID, USERNAME, PASSWORD, NICKNAME, ACTIVATED)
 VALUES (1, 'admin', '$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi', 'admin', 1);
 
