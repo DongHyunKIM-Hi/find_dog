@@ -1,48 +1,83 @@
 # find_dog
-===========================
+
+--------------------
+
+![logo](src/main/resources/templates/image/logo.png)
 
 [영상으로 보러가기](https://www.youtube.com/watch?v=zX-L3am3so4)
 
+```
+개발 인원: 백앤드 3명 (강미진, 김동현, 임다희) / 프론트 2명 (김형민, 심현인)
+```
+# 목차
 
-참여인원: 백앤드 3명 (강미진, 김동현, 임다희) / 프론트 2명 (김형민, 심현인)
+- [1. 주제](#주제)
+- [2. 개발 언어](#개발언어)
+- [3. 개발 환경](#개발환경)
+- [4. 기능](#기능)
+- [5. API 설계](#API설계)
+- [6. 기능 상세 소개](#기능상세소개)
+- [7. 동작화면](#동작화면)
 
-<br>
 
-강아지가 이뻐서 쉽게 분양을 받고 성향이 맞지않아 쉽게 파양을 하는 사람들이 많이 있습니다
-처음부터 분양을 받기위한 까다로운 조건을 만들면 좋겠지면 개인의 힘으로는 강제하기가 쉽지 않습니다
-조금이라도 파양되는 강아지의 수를 줄이고 한번 파양되서 새로운 주인을 기다리는 귀여운 강아지를 
-좋은 사람에게 소개시켜주는 사이트를 만들고자 하였습니다.
+## 주제
 
-개발 언어
----------
+강아지가 이뻐서 쉽게 분양을 받고 성향이 맞지 않아 쉽게 파양을 하는 사람들이 많이 있습니다
+처음부터 분양을 받기 위한 까다로운 조건을 만들면 좋겠지만 개인의 힘으로는 강제하기가 쉽지 않습니다
+조금이라도 파양되는 강아지의 수를 줄이고 한번 파양서 새로운 주인을 기다리는 귀여운 강아지를 
+좋은 사람에게 소개해 주는 사이트를 만들고자 하였습니다.
+
+## 개발언어
 - Backend: Java 8
 - Frontend: React
 
+## 개발환경
+- Java: JDK 1.8
+- IDE: IntelliJ
+- DB : mySQL
+- 빌드 관리 : Gradle
+- 프레임워크: SpringBoot
+> - ORM: Spring-Data-JPA
+> - 보안 : Spring security
+> - 형상 관리 툴 : git
+> - Others: Websocket, Lombok
 
-## 기능 (각자 개발한 부분을 적어주세요)
+## 기능
 
 1. mbti 검사를 통한 자신과 성향이 맞는 강아지 추천 url: https://github.com/DongHyunKIM-Hi/mbti
 2. chat봇을 통한 상담
-3. 자랑하게 페이지에 게시글 조회/작성/수정/삭제를 위한 CRUD 구현
-4. 자랑하게 페이지에 댓글 조회/작성/수정/삭제를 위한 CRUD 구현
-5. 원하는 게시글에 좋아요를 누를 수 있는 기능 구현
+3. 게시글 및 댓글 CRUD 기능
+4. 좋아요 구현
+5. 회원가입 / 로그인
 
-<br>
 
-## API 설계 (excel로 작성해서 보내주세요)
-</br>
+## API설계
+
+### MBTI 및 chat봇 상담
 
 ![](https://images.velog.io/images/hyundong_kk/post/dc5cb60f-6865-44e7-89ca-fcefa2889844/KakaoTalk_20210421_225440861.png)
 
+<br>
+
+### 자랑하개 게시판
 
 ![img.png](img.png)
 
 <br>
 
-## 기능소개
-여기부터는 열심히 만든 기능들을 소개하면 될 것 같습니다.
+### 회원가입 / 로그인
 
-##Article Entity
+![](src/main/resources/templates/image/api.png)
+
+<br>
+
+## 기능상세소개
+
+### 게시글 CRUD 구현
+***
+
+####Article Entity
+
 <pre>
 <code>
     @Column
@@ -66,12 +101,13 @@
     }
 </code>
 </pre>
-###
+
 + 자랑하개에 글을 올릴 때 필요한 항목을 전부 멤버변수로 생성하였습니다. 
 + 좋아요 기능을 게시글에 포함하여 생성하였습니다.
-###
 
-##Article Repository
+<br>
+
+####Article Repository
 <pre>
 <code>
     @Transactional
@@ -89,8 +125,9 @@
 + 자랑하개에 있는 게시글을 수정할 때 변경 사항을 수정하여 업데이트하고 좋아요를 누른 유저들의 닉네임 리스트를 반환하여 줍니다.
 + Spring Data JPA를 사용하기 위해 JpaRepository를 상속하고 Article Entity와 연결합니다.
 
+<br>
 
-##Article Controller
+####Article Controller
 <pre>
 <code>
     @ResponseBody
@@ -122,7 +159,11 @@
 
 + 업데이트는 business layer에서 로직을 처리하고 get과 delete는 데이터를 repository에서 받아와 처리하는 방법으로 기능을 구현했습니다. 
 
-## Comment Entity
+<br>
+
+### 댓글 CRUD
+
+#### Comment Entity
 <pre>
 <code>
 @Getter
@@ -162,7 +203,9 @@ public class Comment {
 
 + 댓글을 쓸때 필요한 항목을 전부 멤버변수로 생성하였습니다.
 
-## comment Service
+<br>
+
+#### comment Service
 <pre>
 <code>
  @Transactional
@@ -178,7 +221,9 @@ public class Comment {
 + 댓글을 수정 할 때 변경내용을 dto로 받아 내용을 업데이트하고 댓글의 아이디를 반환하여 줍니다.
 + Spring Data JPA를 사용하기 위해 JpaRepository를 상속하고 Comment Entity와 연결합니다
 
-##Comment Controller
+<br>
+
+#### Comment Controller
 <pre>
 <code>
 @RestController
@@ -217,7 +262,8 @@ public class CommentController {
 
 + 업데이트는 business layer에서 로직을 처리하고 나머지는 Repository에서 바로 받아와 처리하는 방식으로 구현하였습니다.
 ## 동작화면
-</br>
+
+<br>
 
 ![](https://images.velog.io/images/hyundong_kk/post/b1561107-34c7-4b38-b2a8-25cc52ca6e4c/image.png)
 
