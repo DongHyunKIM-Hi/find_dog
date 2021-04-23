@@ -103,7 +103,7 @@
 
 <br>
 
-###Article Repository
+#### Article Repository
 <pre>
 <code>
     @Transactional
@@ -123,7 +123,7 @@
 
 <br>
 
-###Article Controller
+#### Article Controller
 <pre>
 <code>
     @ResponseBody
@@ -161,7 +161,7 @@
 
 ***
 
-### Comment Entity
+#### Comment Entity
 <pre>
 <code>
 @Getter
@@ -203,7 +203,7 @@ public class Comment {
 
 <br>
 
-### comment Service
+#### comment Service
 <pre>
 <code>
  @Transactional
@@ -221,7 +221,7 @@ public class Comment {
 
 <br>
 
-### Comment Controller
+#### Comment Controller
 <pre>
 <code>
 @RestController
