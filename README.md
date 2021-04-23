@@ -1,7 +1,5 @@
 # find_dog
 
---------------------
-
 ![logo](src/main/resources/templates/image/logo.png)
 
 [영상으로 보러가기](https://www.youtube.com/watch?v=zX-L3am3so4)
@@ -19,6 +17,7 @@
 - [6. 기능 상세 소개](#기능상세소개)
 - [7. 동작화면](#동작화면)
 
+<br>
 
 ## 주제
 
@@ -27,9 +26,13 @@
 조금이라도 파양되는 강아지의 수를 줄이고 한번 파양서 새로운 주인을 기다리는 귀여운 강아지를 
 좋은 사람에게 소개해 주는 사이트를 만들고자 하였습니다.
 
+<br>
+
 ## 개발언어
 - Backend: Java 8
 - Frontend: React
+
+<br>
 
 ## 개발환경
 - Java: JDK 1.8
@@ -42,6 +45,8 @@
 > - 형상 관리 툴 : git
 > - Others: Websocket, Lombok
 
+<br>
+
 ## 기능
 
 1. mbti 검사를 통한 자신과 성향이 맞는 강아지 추천 url: https://github.com/DongHyunKIM-Hi/mbti
@@ -50,33 +55,25 @@
 4. 좋아요 구현
 5. 회원가입 / 로그인
 
+<br>
 
 ## API설계
 
 ### MBTI 및 chat봇 상담
-
 ![](https://images.velog.io/images/hyundong_kk/post/dc5cb60f-6865-44e7-89ca-fcefa2889844/KakaoTalk_20210421_225440861.png)
 
-<br>
-
 ### 자랑하개 게시판
-
 ![img.png](img.png)
 
-<br>
-
 ### 회원가입 / 로그인
-
 ![](src/main/resources/templates/image/api.png)
-
-<br>
 
 ## 기능상세소개
 
 ### 게시글 CRUD 구현
 ***
 
-####Article Entity
+###Article Entity
 
 <pre>
 <code>
@@ -107,7 +104,7 @@
 
 <br>
 
-####Article Repository
+###Article Repository
 <pre>
 <code>
     @Transactional
@@ -127,7 +124,7 @@
 
 <br>
 
-####Article Controller
+###Article Controller
 <pre>
 <code>
     @ResponseBody
@@ -163,7 +160,9 @@
 
 ### 댓글 CRUD
 
-#### Comment Entity
+***
+
+### Comment Entity
 <pre>
 <code>
 @Getter
@@ -205,7 +204,7 @@ public class Comment {
 
 <br>
 
-#### comment Service
+### comment Service
 <pre>
 <code>
  @Transactional
@@ -223,7 +222,7 @@ public class Comment {
 
 <br>
 
-#### Comment Controller
+### Comment Controller
 <pre>
 <code>
 @RestController
@@ -261,6 +260,9 @@ public class CommentController {
 </code></pre>
 
 + 업데이트는 business layer에서 로직을 처리하고 나머지는 Repository에서 바로 받아와 처리하는 방식으로 구현하였습니다.
+
+<br>
+
 ## 동작화면
 
 <br>
