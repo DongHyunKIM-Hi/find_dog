@@ -71,9 +71,8 @@
 ## 기능상세소개
 
 ### 게시글 CRUD 구현
-***
 
-###Article Entity
+#### Article Entity
 
 <pre>
 <code>
