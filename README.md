@@ -1,5 +1,7 @@
 # find_dog
 
+http://finddog.mini.s3-website.ap-northeast-2.amazonaws.com/
+
 ![logo](src/main/resources/templates/image/logo.png)
 
 [영상으로 보러가기](https://www.youtube.com/watch?v=zX-L3am3so4)
